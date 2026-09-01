@@ -1,0 +1,106 @@
+<div class="card">
+                         
+                          
+                         
+                            
+  <div class=" card-block" >
+    
+      
+      <form>
+        <div class="row">
+            <div class="col-4">
+              <div class="row justify-content-center">
+                <div class='col-12'>
+                  
+                    <img src="/media/{{y.criminal_profile}}" name='photo' alt="User-Profile-Image" style="width: 90x;height: 80px;" class="rounded-pill">
+               
+                </div>
+                </div>
+                <br>
+                <div class="row"  >
+                  <div class='col-12'>
+                    <h6>Personal Details</h6>
+                  </div>
+                </div>
+                <div class="row"  >
+                <div class='col-12'>
+                  <label>Criminal Name:</label>
+                  <input type="text" name="name" class="form-control" value={{y.criminal_name}}>
+                </div>
+              </div>
+              <div class="row" >
+                <div class='col-12'>
+                  <label>Criminal Aadhar:</label>
+                  <input type="text" name='aadhar' class="form-control" value={{y.criminal_city}}>
+                </div>
+                </div>
+              <div class="row" style="margin-top: 10px;">
+                <div class='col-12' >
+                  <label>city:</label>
+                  <input type="text" name='city' class="form-control" value={{y.criminal_city}}>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-8">
+              <div class="row">
+                <h4>jhsdbshdbs,dsdb</h4>
+              </div>
+              
+              <div class="row" style="padding-top:10px;" >
+                <div class='col-12 '>
+                  <div class="card-block table-border-style"  style="background-color: rgb(232, 220, 220);">
+                    <h6>Crime Details</h6>
+                    <div class="table-responsive">
+                        <table class="table table-hover" >
+                            <thead>
+                                <tr>
+                                    
+                                  <th>S.no</th>
+                                    <th>Crime Type</th>
+                                    <th>Crime Description</th>
+                                    
+                                    
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in x %}
+                                <tr>
+                                  <td>{{i.id}}</td>
+                                    <td>{{i.crime_type}}</td>
+                                    <td>{{i.crime_desc}}</td>
+
+                                    
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                </div>
+                </div>
+              
+              
+            </div>
+          
+          
+          <br><br>
+        </div>
+        
+      </form>
+      <div class="row"  style="margin-top: 20px;;">
+        <div class="col-6" style="margin-left: 330px;">
+          <a href="{% url 'criminal_validate' y.id %}">
+          <button class="btn btn-primary">Verify Criminal</button>
+          </a>
+        </div>
+        
+      </div>
+     
+     
+      
+      
+  </div>
+</div>

@@ -1,0 +1,466 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Criminal Tracker</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+    
+        <!-- Favicon -->
+        <link href="{% static 'user/img/passport.png' %}" rel="icon">
+    
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+    
+        <!-- Icon Font Stylesheet -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+        <!-- Libraries Stylesheet -->
+        <link href="{% static 'home/lib/animate/animate.min.css' %}" rel="stylesheet">
+        <link href="{% static 'home/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="{% static 'home/css/bootstrap.min.css' %}" rel="stylesheet">
+    
+        <!-- Template Stylesheet -->
+        <link href="{% static 'home/css/style.css' %}" rel="stylesheet">
+        
+        <link rel="stylesheet" href="{% static 'user/css/search-criminals.css' %}">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        
+    </head>
+
+<body>
+  <script type="text/javascript">
+    function validate() {
+        
+        var mailformat = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+        
+        
+        var search = document.myform.search
+
+         
+        if (search.value.length <= 0) {
+            alert("Please Enter Aadhar no")
+            search.focus();
+            return false;
+        }
+
+      
+       
+
+        
+        
+
+        
+    }   
+</script>
+
+  {% csrf_token %}
+    {% if messages %}              
+    {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+              <script>swal({
+                title: "Error!",
+                text: "{{message}}",
+                icon: "warning",
+                button: "OK",
+              });
+            </script>
+           
+          {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+              <script>swal({
+                title: "Success :)",
+                text: "{{message}}",
+                icon: "success",
+                button: "OK",
+              });
+            </script>
+          {% endif %}              
+        {% endfor %} 
+       {% endif %}
+    
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+
+    
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
+        <a href="{% url 'user_search_criminal' %}" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
+            <h2 class="m-0"><i class="fa fa-book text-primary me-2"></i>&nbsp Blockchain based Criminal Tracker</h2>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a href="{% url 'user_index' %}" class="nav-item nav-link ">Dashboard</a>
+            <a href="{% url 'user_search_criminal' %}" class="nav-item nav-link active">Search Criminal</a>
+            <a href="{% url 'user_my_profile' %}" class="nav-item nav-link">My Profile</a>
+            
+        </div>
+            <a href="{% url 'home_index' %}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Logout&nbsp;&nbsp;<i class="bi bi-box-arrow-right"></i></a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Carousel Start -->
+    
+    <!-- Carousel End -->
+
+
+    <!-- Facts Start -->
+    
+    <!-- Facts End -->
+    <!-- <div class="container-fluid page-header py-6 my-0 mt-0 wow fadeIn" data-wow-delay="0.1s" style="height: 20px;">
+        <div class="container " >
+            <h1 class="display-4 text-white animated slideInDown mb-4">Search Criminals</h1>
+            <nav aria-label="breadcrumb animated slideInDown"  >
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a class="text-white" href="#">User</a></li>
+                    
+                    <li class="breadcrumb-item text-primary active" aria-current="page">Search</li>
+                </ol>
+            </nav>
+        </div>
+    </div> -->
+
+    <!-- About Start -->
+    
+    <!-- About End -->
+
+
+    <!-- Courses Start -->
+    <div class="container-xxl courses  py-3 pb-0"><br>
+        <div class="container" style="background-color: rgb(255, 255, 255);">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 1000px;">
+                <h2 class="text-primary text-uppercase mb-5 ">Search For Criminals</h2>
+                
+                
+
+                  
+                  
+                  
+            </div>
+            <div class="container-fluid justify-content-center fadeIn" >
+              
+                
+                <!-- Card Start -->
+                
+                <!-- End of card -->
+              
+                <div class="row justify-content-center pb-5">
+                  <div class="col-lg-8 col-md-4" >
+                    <form method="post" action="{% url 'user_search_criminal' %}" enctype='multipart/form-data' onsubmit="return validate();" name='myform'>
+                      {% csrf_token %}
+                    <div class="row input-group justify-content-center">
+                      <div class="col-lg-6 col-md-3">
+                        <div class="form-outline " >
+                          <input type="file" name="search" accept=".mp4, .jpg, .png, .jpeg,.JPEG, .gif,.webp" id="imgInp" class="form-control">
+                        </div>&nbsp;
+                      </div>
+                      <div class="col-lg-1 d-flex col-md-12" >
+                        <button type="btn" class="btn btn-primary" style="height: 38px;">
+                          <i class="fas fa-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                    </form><br><br>
+                    <h2 class="text-center mt-2">Search Result</h2>
+                      <!-- Basic Form Inputs card start -->
+                      {% if y %}
+                      <div class="card" style="background-color: rgb(111, 147, 147);">
+                         
+                          
+                         
+                            
+                          <div class=" card-block" >
+                            
+                              
+                              <form>
+                                
+                                  <div class="row justify-content-around">
+                                    <div class="col-lg-6 col-md-2">
+                              
+                                      <img src="/media/{{y.criminal_profile}}" name='photo' style="width: 80px;height: 80px;" alt="User-Profile-Image"  class="rounded-pill">
+                                      <!-- style="width: 80x;height: 70px;" -->
+                                    </div>
+
+                                    
+                                      {% if val == 'valid' %}
+                                      <div class="col-lg-2 col-md-2 ">
+                                      <img src="{% static 'user/val.png'%}" name='photo'  alt="User-Profile-Image" 
+                                        class="rounded-pill">
+                                      </div>
+                                        
+                                      {% elif val == 'invalid' %}
+                                      <div class="col-lg-2 col-md-2 ">
+                                      <img src="{% static 'user/inval.png'%}" name='photo' alt="User-Profile-Image"
+                                        class="rounded-pill">
+                                      {% else %}
+                                    
+                                      <div class="col-2">
+                                      
+                                      </div>
+                                      {% endif %}
+
+                                      
+                                    
+                                  </div>
+                                  {% if val %}
+                                  <div class="col-lg-12">
+                              
+                                    <br>
+                                    <div>
+                                      
+                                        <h6>Personal Details:</h6>
+                                      
+                                    </div>
+                                    <div class="row text-white">
+                                      <div class='col-6'>
+                                        <label>Criminal Name:</label>
+                                        
+                                        <input type="text" name="name" class="form-control" value={{y.criminal_name}} readonly>
+                                      </div>
+
+                                      <div class='col-6'>
+                                        <label>Block Used:</label>
+                                        
+                                        <textarea  name="name" rows="1" class="form-control" readonly>{{x.b}}</textarea>
+                                      </div>
+                                    
+                                      
+                                    </div>
+                                    <div class="row text-white">
+                                      <div class='col-6'>
+                                        <label>Criminal Email:</label>
+                                        <input type="text" name='email' class="form-control" value={{y.criminal_email}} readonly>
+                                      </div>
+
+                                      <div class='col-6'>
+                                        <label>Block Used:</label>
+                                        
+                                        <textarea  name="name" rows="1" class="form-control" readonly>{{x.c}}</textarea>
+                                      </div>
+                                      
+                                    </div>
+                                    <div class="row text-white">
+                                      <div class='col-6'>
+                                        <label>Criminal Aadhar:</label>
+                                        <input type="text" name="aadhar" class="form-control" value={{y.criminal_aadhar}} readonly>
+                                      </div>
+                                      <div class='col-6'>
+                                        <label>Block Used:</label>
+                                        
+                                        <textarea  name="aadhar" rows="1" class="form-control" readonly>{{x.a}}</textarea>
+                                      </div>
+                                    </div>
+                                    <div class="row text-white">
+                                      <div class='col-6'>
+                                        <label>Criminal Address:</label>
+                                        <input type="text" name='address' class="form-control" value={{y.criminal_city}} readonly>
+                                      </div>
+                                      <div class='col-6'>
+                                        <label>Block Used:</label>
+                                        
+                                        <textarea  name="address" rows="1" class="form-control" readonly>{{x.e}}</textarea>
+                                      </div> 
+                                    </div>
+                                    
+                                    
+                                  </div><br>
+                                  {% else %}
+                                  <div class="col-lg-12">
+                              
+                                    <br>
+                                    <div>
+                                      
+                                        <h6>Crime Details:</h6>
+                                      
+                                    </div>
+                                    <div class="row text-white">
+                                      <div class='col-6'>
+                                        <label>Criminal Name:</label>
+                                        <input type="text" name="name" class="form-control" value={{y.criminal_name}} readonly>
+                                      </div>
+                                    
+                                      <div class='col-6'>
+                                        <label>Criminal Email:</label>
+                                        <input type="text" name='aadhar' class="form-control" value={{y.criminal_email}} readonly>
+                                      </div>
+                                    </div>
+                                    <div class="row text-white">
+                                      <div class='col-6'>
+                                        <label>Criminal Aadhar:</label>
+                                        <input type="text" name="aadhar" class="form-control" value={{y.criminal_aadhar}} readonly>
+                                      </div>
+                                    
+                                      <div class='col-6'>
+                                        <label>Criminal Address:</label>
+                                        <input type="text" name='address' class="form-control" value={{y.criminal_city}} readonly>
+                                      </div>
+                                    </div>
+                                    
+                                  </div><br>
+                                  {% endif %}
+                              
+                                  
+                              
+                              
+                                    <div class="row" style="padding-top:10px;">
+                                      <div>
+                                      
+                                        <h6>Crime Details:</h6>
+                                      
+                                    </div><br>
+                                      <div class='col-12 text-white'>
+                                        <div class="card-block table-border-style">
+                                          
+                                          <div class="table-responsive">
+                                            <table class="table table-hover">
+                                              <thead class="text-white">
+                                                <tr>
+                              
+                                                  <th>S.no</th>
+                                                  <th>Crime Type</th>
+                                                  <th>Crime Description</th>
+                              
+                              
+                              
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                                {% for i in x %}
+                                                <tr  class="text-white">
+                                                  <td>{{i.id}}</td>
+                                                  <td>{{i.crime_type}}</td>
+                                                  <td>{{i.crime_desc}}</td>
+                              
+                              
+                                                </tr>
+                                                {% endfor %}
+                                              </tbody>
+                                            </table>
+                                          </div>
+                                        </div>
+                              
+                                      </div>
+                                    </div>
+                              
+                              
+                                  
+                              
+                              
+                                  <br><br>
+                                
+                              
+                              </form>
+                              {% if val %}
+                              
+                              {% elif x %}
+                              <div class="d-flex justify-content-center"  style="margin-top: 20px;;">
+                                
+                                <a href="criminal_validate/{{y.id}}">
+                                <button class="btn btn-primary">Verify Criminal</button>
+                                </a>
+                                
+                              </div><br>
+                              <div class="row text-center text-white">
+                                <label for=""><i class="fa fa-info-circle"></i>&nbsp; It will verify the criminal record using Block Chain.</label>
+                              </div>
+                              {% else%}
+                              
+                              {% endif %}
+                             
+                             
+                              
+                              
+                          </div>
+                      </div>
+                      {% endif %}
+                      <!-- Basic Form Inputs card end -->
+                  </div>
+              </div>
+              
+                  
+               
+               <br>
+              <br>
+              
+
+            </div>
+
+        </div>
+        
+    </div>
+
+    <!-- Courses End -->
+
+    
+  
+    <!-- Features Start -->
+    
+    <!-- Features End -->
+
+
+    <!-- Team Start -->
+    
+    <!-- Team End -->
+
+
+    <!-- Testimonial Start -->
+    
+    <!-- Testimonial End -->
+
+
+    <!-- Footer Start -->
+    
+    <!-- Footer End -->
+
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright text-light py-4 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <footer class="row justify-content-center " style="padding-left: 50px;">
+                <div class="col-lg-4 col-md-4 justify-content-center">
+                    <p>Copyright © Codebook. All rights reserved.<br><br>
+                        Designed and Developed By: <a href="https://www.codebook.in" target="_blank">Codebook</a>
+                     </p>
+                  
+                </div>
+              </footer>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+
+    <!-- Back to Top -->
+   
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'home/lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'home/lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'home/lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'home/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'home/js/main.js' %}"></script>
+</body>
+
+</html>
