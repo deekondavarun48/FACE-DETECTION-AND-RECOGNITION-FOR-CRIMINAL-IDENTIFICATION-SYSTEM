@@ -12,13 +12,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
 from django.contrib import messages
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-^%y6$j@!f6^^a8)a+u0apg4k!56k6sv7(fpwj68vnw29p!6ocr'
@@ -26,7 +23,7 @@ SECRET_KEY = 'django-insecure-^%y6$j@!f6^^a8)a+u0apg4k!56k6sv7(fpwj68vnw29p!6ocr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -59,7 +56,7 @@ ROOT_URLCONF = 'Criminal_Tracker_Face_Detection.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'assets/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'assets/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -84,6 +81,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -119,13 +117,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-SSTATIC_URL = '/static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 STATICFILES_DIRS = [
     BASE_DIR / 'assets' / 'static',
-    BASE_DIR / 'assets' / 'static' / 'home',
-    BASE_DIR / 'assets' / 'static' / 'admin' / 'assets',
-    BASE_DIR / 'assets' / 'static' / 'user',
 ]
 
 MEDIA_URL = '/media/'
@@ -138,9 +134,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 MESSAGE_TAGS = {
-    messages.DEBUG : 'alert-secondary',
-    messages.INFO : 'alert-info',
-    messages.WARNING : 'alert-warning',
-    messages.SUCCESS : 'alert-success',
-    messages.ERROR : 'alert-danger',
-} 
+    messages.DEBUG: 'alert-secondary',
+    messages.INFO: 'alert-info',
+    messages.WARNING: 'alert-warning',
+    messages.SUCCESS: 'alert-success',
+    messages.ERROR: 'alert-danger',
+}
