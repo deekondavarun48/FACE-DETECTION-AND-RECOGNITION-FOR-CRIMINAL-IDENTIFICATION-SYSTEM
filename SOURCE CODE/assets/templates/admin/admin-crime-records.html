@@ -1,0 +1,480 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Criminal Tracker</title>
+    <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 10]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
+    <meta name="author" content="Codedthemes" />
+    <!-- Favicon icon -->
+    <link rel="icon" href="{% static 'admin/assets/images/passport.png' %}" type="image/x-icon">
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+    <!-- waves.css -->
+    <link rel="stylesheet" href="{% static 'admin/assets/pages/waves/css/waves.min.css' %}" type="text/css" media="all">
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/assets/css/bootstrap/css/bootstrap.min.css' %}">
+    <!-- themify-icons line icon -->
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/assets/icon/themify-icons/themify-icons.css' %}">
+    <!-- ico font -->
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/assets/icon/icofont/css/icofont.css' %}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/assets/icon/font-awesome/css/font-awesome.min.css' %}">
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/assets/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/assets/css/jquery.mCustomScrollbar.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js">
+   <link rel="stylesheet" href="https://cdn.tailwindcss.com/3.0.12">
+   
+   <script src="https://cdn.tailwindcss.com/3.0.12"></script> 
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+</head>
+
+<body>
+    <!-- Pre-loader start -->
+    <div class="theme-loader">
+        <div class="loader-track">
+            <div class="preloader-wrapper">
+                <div class="spinner-layer spinner-blue">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+                <div class="spinner-layer spinner-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+
+                <div class="spinner-layer spinner-yellow">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+
+                <div class="spinner-layer spinner-green">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pre-loader end -->
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+            <nav class="navbar header-navbar pcoded-header">
+                <div class="navbar-wrapper">
+                    <div class="navbar-logo ml-5">
+                        <a class="mobile-menu waves-effect waves-light " id="mobile-collapse" href="#!" style="padding-left: 0px;">
+                            <i class="ti-menu"></i>
+                        </a>
+                        <div class="mobile-search waves-effect waves-light">
+                            <div class="header-search">
+                                <div class="main-search morphsearch-search">
+                                    <div class="input-group">
+                                        <span class="input-group-prepend search-close"><i class="ti-close input-group-text"></i></span>
+                                        <input type="text" class="form-control" placeholder="Enter Keyword">
+                                        <span class="input-group-append search-btn"><i class="ti-search input-group-text"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{% url 'admin_index' %}">
+                            CRIMINAL TRACKER
+                        </a>
+                        
+                        <a class="mobile-options waves-effect waves-light">
+                            <i class="ti-more"></i>
+                        </a>
+                    </div>
+                    <div class="navbar-container container-fluid">
+                        <ul class="nav-left">
+                            <li>
+                                <div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a></div>
+                            </li>
+                            
+                        </ul>
+                        <ul class="nav-right">
+                            
+                            <li class="user-profile header-notification">
+                                <a href="#!" class="waves-effect waves-light mr-3  " style="padding-right: 40px;">
+                                    
+                                    
+                                        <a href="{% url 'home_index' %}">
+                                            <i class="ti-layout-sidebar-left"></i>&nbsp; Logout
+                                        </a>
+                                    
+                                    
+                                </a>
+                                
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    <nav class="pcoded-navbar">
+                        <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
+                        <div class="pcoded-inner-navbar main-menu">
+                            <div class="">
+                                <div class="main-menu-header">
+                                    <img class="img-80 img-radius" style="margin-left: 100px;" src="{% static 'admin/assets/images/admin.png' %}" alt="User-Profile-Image">
+                                    <div class="user-details">
+                                        <span id="more-details">Admin<i class="fa fa-caret"></i></span>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="p-15 p-b-0">
+                                <form class="form-material">
+                                    
+                                </form>
+                            </div>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="active">
+                                    <a href="{% url 'admin_index' %}" class="waves-effect waves-dark">
+                                        <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
+                                        <span class="pcoded-mtext">Dashboard</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                        <span class="pcoded-micon"><i class="bi bi-hospital"></i><b>BC</b></span>
+                                        <span class="pcoded-mtext">Police Station Management</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class=" ">
+                                            <a href="{% url 'admin_add_police_stations' %}" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Add Police Station</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="{% url 'admin_manage_police_stations' %}" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Manage Police Station</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        
+                                    </ul>
+                                </li>
+                            </ul>
+                            
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                        <span class="pcoded-micon"><i class="bi bi-shield-check"></i><b>BC</b></span>
+                                        <span class="pcoded-mtext">Police Officer Management</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class=" ">
+                                            <a href="{% url 'admin_add_police_officers' %}" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Add Police Officer</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="{% url 'admin_manage_police_officers' %}" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Manage Police Officer</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="pcoded-item pcoded-left-item">
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)" class="waves-effect waves-dark">
+                                        <span class="pcoded-micon"><i class="fa fa-gavel" aria-hidden="true"></i><b>BC</b></span>
+                                        <span class="pcoded-mtext">Criminal Management</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class=" ">
+                                            <a href="{% url 'admin_add_criminals' %}" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Add Criminal</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="{% url 'admin_manage_criminals' %}" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Manage Criminal</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="{% url 'admin_view_criminals_list' %}" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Add Crime</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="{% url 'admin_manage_crime' %}" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Manage Crime</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        
+                                        
+                                    </ul>
+                                </li>
+                            </ul>
+                            
+                            
+                        </div>
+                    </nav>
+                    <div class="pcoded-content">
+                        <!-- Page-header start -->
+                        <div class="page-header" style="padding-left: 20px;padding-top: 27px;">
+                            <div class="page-block" >
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <div class="page-header-title">
+                                            <h5 class="m-b-10">Crime Management</h5>
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <ul class="breadcrumb">
+                                            <li class="breadcrumb-item">
+                                                <a href="{% url 'admin_index' %}"> <i class="fa fa-home"></i> </a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="#!">Manage Crime</a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="#!">View Record</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Page-header end -->
+                        <div class="pcoded-inner-content" style="padding-left: 40px;">
+                            <!-- Main-body start -->
+                            <div class="main-body">
+                                <div class="page-wrapper">
+
+                                    <!-- Page body start -->
+                                    <div class="page-body ">
+                                            
+                                                                               
+                                        <div class="row justify-content-center">
+                                            <div class="col-12">
+                                                <!-- Basic Form Inputs card start -->
+                                                <div class="card">
+                                                    <div class="row justify-content-center">
+                                                        <div class="card-header">
+                                                            <form method='post' enctype="multipart/form-data">
+                                                                {% csrf_token %} 
+                                                            <img name="photo" class=" img-radius" src="/media/{{y.criminal_profile}}" alt="User-Profile-Image" style="width: 60px;height: 60px;" class="rounded-pill">
+                                                        </form>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row justify-content-center">
+                                                    <h4>{{x.criminal_name}}</h4><br><br>
+                                                </div>
+                                                    <div class="row justify-content-center">
+                                                    
+
+                                                        
+                                                        {% comment %} <input type="file" name='photo' class="block text-sm text-slate
+                                                        file:mr-4 file:py-2 file:px-4
+                                                        file:rounded-full file:border-0
+                                                        file:text-sm file:font-semibold
+                                                        file:bg-violet-50 file:text-violet-700
+                                                        hover:file:bg-violet-100" style="padding-left:160px ;" accept="image/*" />
+                                                        
+                                           {% endcomment %}
+                                                        
+                                          
+                                          
+                                          
+                                                      </div>
+                                                    
+                                                    
+                                                   
+                                                      <div class="card-block table-border-style">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-hover">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>S.No</th>
+                                                                        <th>Aadhar Number</th>
+                                                                        <th>Crime Type</th>
+                                                                        <th>Description</th>
+                                                                        
+                                                                        <th>Date</th>
+                                                                        <th>Action</th>
+                                                                        
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    {% for x in s %}
+                                                                    <tr>
+                                                                        <th scope="row">{{x.id}}</th>
+                                                                        <td>{{x.crime_aadhar}}</td>
+                                                                        <td>{{x.crime_type}}</td>
+                                                                        <td>{{x.crime_desc}}</td>
+                                                                        <td>{{x.crime_added_date}}</td>
+                                                                        <td>
+                                                                            <a href="{% url 'officer_delete2' x.id %}">
+                                                                            <button type="btn" class="btn btn-danger waves-effect waves-light" ><i class="bi bi-trash-fill"></i>&nbsp;Delete</button>
+                                                                            </a>
+                                                                        </td>
+                                                                        {% comment %} <td>{{i.crime_added_date}}</td> {% endcomment %}
+                                                                        
+                                                                        {% comment %} <td>
+                                                                            <a href="{% url 'admin_manage_crime' %}">
+                                                                                <button class="btn waves-effect waves-light btn-info btn-outline-info"><i class="bi bi-pencil-square"></i>&nbsp;Edit</button>
+                                                                            </a>
+                                                                        </td> {% endcomment %}
+                                                                    </tr>
+                                                                    {% endfor %}
+        
+                                                                    
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Basic Form Inputs card end -->
+                                            </div>
+                                        </div>
+                                        
+                                    
+                                    </div>
+                                    <!-- Page body end -->
+                                </div>
+                            </div>
+                            <!-- Main-body end -->
+                            <div id="styleSelector">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Warning Section Starts -->
+    <!-- Older IE warning message -->
+    <!--[if lt IE 10]>
+<div class="ie-warning">
+    <h1>Warning!!</h1>
+    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers
+        to access this website.</p>
+    <div class="iew-container">
+        <ul class="iew-download">
+            <li>
+                <a href="http://www.google.com/chrome/">
+                    <img src="assets/images/browser/chrome.png" alt="Chrome">
+                    <div>Chrome</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.mozilla.org/en-US/firefox/new/">
+                    <img src="assets/images/browser/firefox.png" alt="Firefox">
+                    <div>Firefox</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.opera.com">
+                    <img src="assets/images/browser/opera.png" alt="Opera">
+                    <div>Opera</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.apple.com/safari/">
+                    <img src="assets/images/browser/safari.png" alt="Safari">
+                    <div>Safari</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                    <img src="assets/images/browser/ie.png" alt="">
+                    <div>IE (9 & above)</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <p>Sorry for the inconvenience!</p>
+</div>
+<![endif]-->
+    <!-- Warning Section Ends -->
+    <!-- Required Jquery -->
+    <script type="text/javascript" src="
+{% static 'admin/assets/js/jquery/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/assets/js/jquery-ui/jquery-ui.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/assets/js/popper.js/popper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/assets/js/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!-- waves js -->
+    <script src="{% static 'admin/assets/pages/waves/js/waves.min.js' %}"></script>
+    <!-- jquery slimscroll js -->
+    <script type="text/javascript" src="{% static 'admin/assets/js/jquery-slimscroll/jquery.slimscroll.js' %}"></script>
+
+    <!-- Custom js -->
+    <script src="{% static 'admin/assets/js/pcoded.min.js' %}"></script>
+    <script src="{% static 'admin/assets/js/vertical/vertical-layout.min.js' %}"></script>
+    <script src="{% static 'admin/assets/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/assets/js/script.js' %}"></script>
+</body>
+
+</html>
