@@ -1,4 +1,4 @@
-# 🛡️ Criminal Identification & Tracking System using Face Recognition
+# 🔍 🛡️ FACE DETECTION AND RECOGNITION FOR CRIMINAL IDENTIFICATION SYSTEM 🚨 👁️
 
 [![Python Version](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/)
 [![Django](https://img.shields.io/badge/Django-4.2-darkgreen.svg)](https://www.djangoproject.com/)
@@ -47,17 +47,17 @@ An automated web-based security and surveillance platform designed to identify a
 ```text
 face-detection-criminal-identification-system/
 │
-├── .python-version               # Pinned Python version (3.10.14)
-├── ABSTRACT/                     # Project abstract documents
-├── CERTIFICATION.docx            # Certification docs
-├── DOCUMENTATION.docx            # Technical documentation
-├── Mini Project ppt.pptx         # Presentation deck
-├── README.md                     # Project documentation
+├── .python-version                # Pinned Python version (3.10.14)
+├── ABSTRACT/                      # Project abstract documents
+├── CERTIFICATION.docx             # Certification docs
+├── DOCUMENTATION.docx             # Technical documentation
+├── Mini Project ppt.pptx          # Presentation deck
+├── README.md                      # Project documentation
 │
-└── SOURCE CODE/                  # Core Application Directory
+└── SOURCE CODE/                   # Core Application Directory
     ├── manage.py
-    ├── requirments.txt           # Dependency specifications
-    ├── db.sqlite3                # SQLite database file
+    ├── requirments.txt            # Dependency specifications
+    ├── db.sqlite3                 # SQLite database file
     │
     ├── Criminal_Tracker_Face_Detection/  # Main Django project configuration
     │   ├── __init__.py
@@ -65,9 +65,9 @@ face-detection-criminal-identification-system/
     │   ├── urls.py
     │   └── wsgi.py
     │
-    ├── adminapp/                 # Admin operations & officer management
-    ├── homeapp/                  # Public landing, information & auth views
-    ├── userapp/                  # Officer/Investigator search & verification views
+    ├── adminapp/                  # Admin operations & officer management
+    ├── homeapp/                   # Public landing, information & auth views
+    ├── userapp/                   # Officer/Investigator search & verification views
     │
-    ├── assets/                   # Static assets (CSS, JS, images, templates)
-    └── media/                    # Stored suspect images and uploads
+    ├── assets/                    # Static assets (CSS, JS, images, templates)
+    └── media/                     # Stored suspect images and uploads
